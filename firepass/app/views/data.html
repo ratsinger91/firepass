@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width">
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+  <!-- build:css(.) styles/vendor.css -->
+  <!-- bower:css -->
+  <!-- endbower -->
+  <!-- endbuild -->
+  <!-- build:css(.tmp) styles/main.css -->
+  <link rel="stylesheet" href="../styles/main.scss">
+  <!-- endbuild -->
+</head>
+<body ng-app="fireApp" ng-controller="SampleCtrl">
+
+
+
+  <div class="controls"> 
+
+    <button class="btn btn-primary" ng-click="addGruppo()">New Group</button> 
+
+
+
+    
+
+    <div class="titolo" ng-repeat="gruppo in gruppi">
+
+
+
+
+      <div class="gruppi">
+
+              
+              <input class="gruppo" ng-model="gruppo.gruppo" ng-change="gruppi.$save(gruppo)" />
+              <button class="btn btn-danger" ng-click="gruppi.$remove(gruppo)">-</button>
+
+      </div>
+
+
+
+      
+      <div class="riquadro">
+
+
+                  <div class="add">
+
+                        <h5 class="title">Description<span class="label label-default"></span></h5>
+                        <h5 class="title">Username<span class="label label-default"></span></h5>
+                        <h5 class="title">Password<span class="label label-default"></span></h5>
+
+                  </div>
+
+
+
+
+
+                  <div class:"righe" ng-repeat="attr in credentials | filter:{gruppo:gruppo.$id}:strict">
+
+                        <form name="visualizzati" novalidate>
+
+                            <input required class="add"  ng-model="attr.desc" />
+                            <input required class="add"  ng-model="attr.user"  />
+                            <input required class="add" ng-model="attr.password" />
+                            <button class="btn btn-danger" ng-click="credentials.$remove(attr)">Delete </button>
+                            <button ng-hide="!visualizzati.$valid" class="btn btn-success" ng-click="credentials.$save(attr)"> Save </button>
+
+                        </form>
+                            
+                  </div>
+
+
+
+                  <div class:"addnew">
+                        <div class="bottone">
+                        <button class="btn btn-primary" type="submit" ng-hide="nascondi" ng-click="vedi=true; nascondi=true">Add Credentials</button></div>
+
+                        <form name="nuovo" novalidate>
+
+                            <input required class="addnew" ng-show="vedi" ng-model="kkk.newDescr" />
+                            <input required class="addnew" ng-show="vedi" ng-model="kkk.newUser" />
+                            <input required class="addnew" ng-show="vedi" ng-model="kkk.newPass" />
+                            <button class="btn btn-primary" ng-hide="!nuovo.$valid" ng-show="vedi && nuovo.$valid" type="submit" ng-click="addMessage(kkk, gruppo.$id); vedi=false; nascondi=false">Add</button>
+                            <button class="btn btn-danger" type="submit" ng-show="vedi" ng-click="vedi=false; nascondi=false; clearBox(kkk)">-</button>
+
+                        </form>
+
+                  </div>
+      </div>
+
+
+
+
+    </div>
+
+
+
+
+
+        
+  </div>
+
+
+
+
+
+    </body>
+    </html>
