@@ -17,8 +17,14 @@
 <body ng-app="fireApp" ng-controller="SampleCtrl">
 
 
+<div class="container">
 
-  <div class="controls"> 
+  <div class="row">
+
+    <div class="col-sm-2" class="bordi">
+    </div>
+  <div class="col-sm-8">
+  <div class="pad"> 
 
     <button class="btn btn-primary" ng-click="addGruppo()">New Group</button> 
 
@@ -26,7 +32,7 @@
 
     
 
-    <div class="titolo" ng-repeat="gruppo in gruppi">
+    <div ng-repeat="gruppo in gruppi">
 
 
 
@@ -43,9 +49,28 @@
 
       
       <div class="riquadro">
+                  <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th>Description</th>
+                        <th>Username</th>
+                        <th>Password</th>
+                      </tr>
+                    </thead>    
+                    <tbody ng-repeat="attr in credentials | filter:{gruppo:gruppo.$id}:strict">
+                      <form name="visualizzati">
+                      <tr>
+                        <td> <input required ng-model="attr.desc" /> </td>
+                        <td> <input required ng-model="attr.user" /> </td>
+                        <td> <input required ng-model="attr.password" /> </td>
+                        <td> <button class="btn btn-danger" ng-click="credentials.$remove(attr)">Delete </button> </td>
+                        <td> <button ng-hide="!visualizzati.$valid" class="btn btn-success" ng-click="credentials.$save(attr)"> Save </button> </td>
+                      </tr>
+                      </form>
+                    </tbody>
+                  </table>
 
-
-                  <div class="add">
+                  <!-- <div class="add">
 
                         <h5 class="title">Description<span class="label label-default"></span></h5>
                         <h5 class="title">Username<span class="label label-default"></span></h5>
@@ -57,7 +82,7 @@
 
 
 
-                  <div class:"righe" ng-repeat="attr in credentials | filter:{gruppo:gruppo.$id}:strict">
+                  <div class="righe" ng-repeat="attr in credentials | filter:{gruppo:gruppo.$id}:strict">
 
                         <form name="visualizzati" novalidate>
 
@@ -69,11 +94,11 @@
 
                         </form>
                             
-                  </div>
+                  </div> -->
 
 
 
-                  <div class:"addnew">
+                  <div class="addnew">
                         <div class="bottone">
                         <button class="btn btn-primary" type="submit" ng-hide="nascondi" ng-click="vedi=true; nascondi=true">Add Credentials</button></div>
 
@@ -94,13 +119,18 @@
 
 
     </div>
+    
 
 
 
 
 
-        
+   </div>     
   </div>
+  <div class="col-sm-2" class"bordi"> 
+    </div>
+</div>
+</div>
 
 
 
