@@ -21,9 +21,9 @@
 
   <div class="row">
 
-    <div class="col-sm-2" class="bordi">
+    <div class="col-sm-1" class="bordi">
     </div>
-  <div class="col-sm-8">
+  <div class="col-sm-12">
   <div class="pad"> 
 
     <button class="btn btn-primary" ng-click="addGruppo()">New Group</button> 
@@ -32,16 +32,19 @@
 
     
 
-    <div ng-repeat="gruppo in gruppi">
+    <div class="bordato" ng-repeat="gruppo in gruppi">
 
 
 
 
       <div class="gruppi">
 
-              
-              <input class="gruppo" ng-model="gruppo.gruppo" ng-change="gruppi.$save(gruppo)" />
+              <div class="input-group">
+              <input  class="form-control input-lg" ng-model="gruppo.gruppo" ng-change="gruppi.$save(gruppo)" />
+              <span class="input-group-addon">
               <button class="btn btn-danger" ng-click="gruppi.$remove(gruppo)">-</button>
+              </span>
+            </div>
 
       </div>
 
@@ -49,7 +52,7 @@
 
       
       <div class="riquadro">
-                  <table class="table table-striped">
+                  <table class="table">
                     <thead>
                       <tr>
                         <th>Description</th>
@@ -59,12 +62,28 @@
                     </thead>    
                     <tbody ng-repeat="attr in credentials | filter:{gruppo:gruppo.$id}:strict">
                       <form name="visualizzati">
+
                       <tr>
-                        <td> <input required ng-model="attr.desc" /> </td>
-                        <td> <input required ng-model="attr.user" /> </td>
-                        <td> <input required ng-model="attr.password" /> </td>
-                        <td> <button class="btn btn-danger" ng-click="credentials.$remove(attr)">Delete </button> </td>
-                        <td> <button ng-hide="!visualizzati.$valid" class="btn btn-success" ng-click="credentials.$save(attr)"> Save </button> </td>
+
+                        <td width="30%"> <input placeholder="Description" class="form-control" required ng-model="attr.desc" /> </td>
+                        <td width="30%"> <input placeholder="Username" class="form-control" required ng-model="attr.user" /> </td>
+                        <td width="30%">
+                         
+                         <div class="input-group">
+                         <input class="form-control" placeholder="Password" required ng-model="attr.password"  type="{{tipo}}"/>  
+                          
+                         <span class="input-group-addon">
+                         <button  type="radio"  ng-click=" tipo='text'"> <i class="glyphicon glyphicon-eye-open"></i></button>
+                         </span>
+
+                         <span class="input-group-addon">
+                         <button  type="radio"  ng-click=" tipo='password'"> <i class="glyphicon glyphicon-eye-close"></i></button>
+                         </span>
+
+                          </div>
+                       </td>
+                        <td width="5%" > <button class="btn btn-danger" ng-click="credentials.$remove(attr)">Delete </button> </td>
+                        <td width="5%"> <button ng-hide="!visualizzati.$valid" class="btn btn-success" ng-click="credentials.$save(attr)"> Save </button> </td>
                       </tr>
                       </form>
                     </tbody>
@@ -98,21 +117,50 @@
 
 
 
-                  <div class="addnew">
-                        <div class="bottone">
-                        <button class="btn btn-primary" type="submit" ng-hide="nascondi" ng-click="vedi=true; nascondi=true">Add Credentials</button></div>
+                    <div class="addnew">
 
-                        <form name="nuovo" novalidate>
+                          <div class="bottone">
+                            <button class="btn btn-primary" type="submit" ng-hide="nascondi" ng-click="vedi=true; nascondi=true">Add Credentials</button>
+                          </div>
 
-                            <input required class="addnew" ng-show="vedi" ng-model="kkk.newDescr" />
-                            <input required class="addnew" ng-show="vedi" ng-model="kkk.newUser" />
-                            <input required class="addnew" ng-show="vedi" ng-model="kkk.newPass" />
-                            <button class="btn btn-primary" ng-hide="!nuovo.$valid" ng-show="vedi && nuovo.$valid" type="submit" ng-click="addMessage(kkk, gruppo.$id); vedi=false; nascondi=false">Add</button>
-                            <button class="btn btn-danger" type="submit" ng-show="vedi" ng-click="vedi=false; nascondi=false; clearBox(kkk)">-</button>
+                          <form ng-show="vedi" name="nuovo" novalidate>
 
-                        </form>
+                            <table class="table">
 
-                  </div>
+                              <thead>
+                                <th>New credentials</th>
+                              </thead>
+
+                              <tbody>
+
+                              <tr>
+                                <td width="30%">  
+                                  <input required placeholder="Description" class="form-control" ng-show="vedi" ng-model="kkk.newDescr"/>
+                                </td>
+
+                                <td width="30%">  
+                                  <input required placeholder="Username" class="form-control" ng-show="vedi" ng-model="kkk.newUser"/>
+                                </td>
+
+                                <td width="30%">  
+                                  <input required placeholder="Password" class="form-control" ng-show="vedi" ng-model="kkk.newPass" />
+                                </td>
+
+                                <td width="5%">  
+                                  <button class="btn btn-primary" ng-hide="!nuovo.$valid" ng-show="vedi && nuovo.$valid" type="submit" ng-click="addMessage(kkk, gruppo.$id); vedi=false; nascondi=false">Add</button>
+                                </td>
+
+                                <td width="5%">  
+                                  <button class="btn btn-danger" type="submit" ng-show="vedi" ng-click="vedi=false; nascondi=false; clearBox(kkk)">-</button>
+                                </td>
+                              </tr> 
+
+                              </tbody>
+                            
+                            </table>
+                          </form>
+
+                    </div>
       </div>
 
 
@@ -127,7 +175,7 @@
 
    </div>     
   </div>
-  <div class="col-sm-2" class"bordi"> 
+  <div class="col-sm-1" class"bordi"> 
     </div>
 </div>
 </div>

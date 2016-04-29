@@ -12,15 +12,11 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 
 body {
   padding: 0;
-
-
-
-
-
-
-background: #2980b9; /* fallback for old browsers */
-background: -webkit-linear-gradient(to left, #2980b9 , #2c3e50); /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to left, #2980b9 , #2c3e50); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: url(../images/sfo.png) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
         
         
         
@@ -63,14 +59,52 @@ background: linear-gradient(to left, #2980b9 , #2c3e50); /* W3C, IE 10+/ Edge, F
 }
 
 
-.col-sm-8{
-  height:100vh !important;
 
-background-color: #fff; 
-background-image: 
-linear-gradient(90deg, transparent 79px, #abced4 79px, #abced4 81px, transparent 81px),
-linear-gradient(#eee .1em, transparent .1em);
-background-size: 100% 1.2em;
+
+
+
+.unmask{
+
+  display:inline;
+
+}
+
+
+
+
+.col-sm-12{
+  
+  height: 100%;
+  
+  
+
+  padding: 0;
+  background: url(../images/white.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+}
+
+.centro{
+  
+  height:100%;
+  
+
+  background-color: #fff; 
+  background-image: 
+  linear-gradient(90deg, transparent 79px, #abced4 79px, #abced4 81px, transparent 81px),
+  linear-gradient(#eee .1em, transparent .1em);
+  background-size: 100% 1.2em;
+
+}
+
+
+.bordato{
+  border-bottom: 3px dotted #e5e5e5;
+  
+  margin-bottom: 1px;
 
 }
 
@@ -80,6 +114,7 @@ background-size: 100% 1.2em;
 .pad {
 
     padding-top: 30px;
+    min-height: 100vh;
 }
 
 .add {
@@ -102,9 +137,11 @@ background-size: 100% 1.2em;
 
 .gruppi {
 
+  margin-top: 20px;
+  float:right;
   padding-right: 22px;
-  text-align: right;
-
+  height: 50px;
+  width: 300px;
 
 }
 

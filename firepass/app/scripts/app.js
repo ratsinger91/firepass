@@ -46,10 +46,10 @@ angular
       });
   })
   
-.constant("masterPwd", "-your_password-")
-.constant("db", "-your_main_firebase_db_link-")
-.constant("dbgruppi", "-your_firebase_groups_tab-")
-.constant("dbcredentials", "-your_firebase_credentials_tab-")
+.constant("masterPwd", "YOUR_PASSWORD")
+.constant("db", "YOUR_FIREBASE_DB_LINK")
+.constant("dbgruppi", "YOUR_FIREBASE_GROUPS_TAB_LINK")
+.constant("dbcredentials", "YOUR_FIREBASE_CREDENTIALS_TAB_LINK")
   
   .controller("SampleCtrl", function($rootScope,  $scope, $firebaseArray, $firebaseObject, $location, masterPwd, db, dbgruppi, dbcredentials) {
   var ref = new Firebase(db);
@@ -61,6 +61,8 @@ angular
   var raf = new Firebase(dbcredentials);
  $scope.credentials= $firebaseArray(raf);
 
+ 
+$scope.tipo="password";
 
 $scope.deleteCred = function(idgruppo,element){
   $scope.tem = [];
@@ -73,6 +75,10 @@ $scope.deleteCred = function(idgruppo,element){
  
   // add new items to the array
   // the message is automatically added to our Firebase database!
+
+
+
+
 
 
 $scope.addGruppo = function(){
