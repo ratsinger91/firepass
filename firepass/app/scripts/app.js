@@ -18,7 +18,8 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'firebase'
+    'firebase',
+    'ngCookies'
   ])
 
 
@@ -50,8 +51,11 @@ angular
 .constant("db", "YOUR_FIREBASE_DB_LINK")
 .constant("dbgruppi", "YOUR_FIREBASE_GROUPS_TAB_LINK")
 .constant("dbcredentials", "YOUR_FIREBASE_CREDENTIALS_TAB_LINK")
+
+
+
   
-  .controller("SampleCtrl", function($rootScope,  $scope, $firebaseArray, $firebaseObject, $location, masterPwd, db, dbgruppi, dbcredentials) {
+  .controller("SampleCtrl", function($rootScope , $scope, $firebaseArray, $firebaseObject, $location, masterPwd, db, dbgruppi, dbcredentials, $cookieStore) {
   var ref = new Firebase(db);
  $scope.gruppos= $firebaseArray(ref);
 
@@ -63,6 +67,26 @@ angular
 
  
 $scope.tipo="password";
+
+
+
+
+$scope.$on('$routeChangeStart', function(next, current) { 
+
+  $scope.loggedUser= $cookieStore.get('auth');
+
+  if ($scope.loggedUser == "yup"){
+
+      $location.path( "/data" );
+  } else{
+
+    $location.path( "/" );
+  }
+   
+ });
+
+
+
 
 $scope.deleteCred = function(idgruppo,element){
   $scope.tem = [];
@@ -121,9 +145,11 @@ $scope.gruppi.$add({ gruppo : "new"});
 
   $scope.login = function() {
     if ($scope.password==masterPwd) {
+     $cookieStore.put("auth", "yup");
       $rootScope.loggedUser = "giusto";
       $scope.nascondi== false;
       $location.path( "/data" );
+      
 
     };
   }
