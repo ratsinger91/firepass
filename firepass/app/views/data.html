@@ -72,12 +72,12 @@
                          <div class="input-group">
                          <input class="form-control" placeholder="Password" required ng-model="attr.password"  type="{{tipo}}"/>  
                           
-                         <span class="input-group-addon">
-                         <button  type="radio"  ng-click=" tipo='text'"> <i class="glyphicon glyphicon-eye-open"></i></button>
+                         <span class="input-group-addon" ng-hide="text">
+                         <button  type="radio"  ng-click=" tipo='text'; text=true" > <i class="glyphicon glyphicon-eye-open"></i></button>
                          </span>
 
-                         <span class="input-group-addon">
-                         <button  type="radio"  ng-click=" tipo='password'"> <i class="glyphicon glyphicon-eye-close"></i></button>
+                         <span class="input-group-addon" ng-hide="!text">
+                         <button  type="radio"  ng-click=" tipo='password' ; text=false"   > <i class="glyphicon glyphicon-eye-close"></i></button>
                          </span>
 
                           </div>
