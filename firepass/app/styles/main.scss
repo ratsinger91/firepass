@@ -103,7 +103,7 @@ body {
 
 .bordato{
   margin-top: 20px;
-  border-bottom: 3px dotted #e5e5e5;
+  
   
   margin-bottom: 1px;
 
@@ -112,12 +112,19 @@ body {
 
 .search{
 
+  padding-right: 8px;
   position: absolute;
-  width: 300px;
+  width: 350px;
   float:right;
 
 }
 
+.odd {
+
+ background-color: #F2F2F2;
+
+
+}
 
 
 
@@ -149,9 +156,9 @@ body {
 
   margin-top: 20px;
   float:right;
-  padding-right: 22px;
+  padding-right: 8px;
   height: 50px;
-  width: 300px;
+  width: 350px;
 
 }
 
@@ -171,7 +178,7 @@ body {
 
 .bottone{
 
-  padding-right: 26px;
+  padding-right: 10px;
   text-align: right;
 }
 

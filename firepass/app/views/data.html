@@ -39,14 +39,14 @@
     <div class="bordato" ng-repeat="gruppo in gruppi | filter:{gruppo:groupFilter}">
 
 
-
+      <div ng-class-odd="'odd'">
 
       <div class="gruppi">
 
               <div class="input-group">
               <input  class="form-control input-lg" ng-model="gruppo.gruppo" ng-change="gruppi.$save(gruppo)" />
               <span class="input-group-addon">
-              <button class="btn btn-danger" ng-click="gruppi.$remove(gruppo)">-</button>
+              <button class="btn btn-danger" ng-click="gruppi.$remove(gruppo)"><i class="glyphicon glyphicon-minus"></i></button>
               </span>
             </div>
 
@@ -86,8 +86,8 @@
 
                           </div>
                        </td>
-                        <td width="5%" > <button class="btn btn-danger" ng-click="credentials.$remove(attr)">Delete </button> </td>
-                        <td width="5%"> <button ng-hide="!visualizzati.$valid" class="btn btn-success" ng-click="credentials.$save(attr)"> Save </button> </td>
+                        <td width="5%" > <button class="btn btn-danger" ng-click="credentials.$remove(attr)"><i class="glyphicon glyphicon-minus"></i></button> </td>
+                        <td width="5%"> <button ng-hide="!visualizzati.$valid" class="btn btn-success" ng-click="credentials.$save(attr)"><i class="glyphicon glyphicon-ok"></i></button> </td>
                       </tr>
                       </form>
                     </tbody>
@@ -124,7 +124,7 @@
                     <div class="addnew">
 
                           <div class="bottone">
-                            <button class="btn btn-primary" type="submit" ng-hide="nascondi" ng-click="vedi=true; nascondi=true">Add Credentials</button>
+                            <button class="btn btn-primary" type="submit" ng-hide="nascondi" ng-click="vedi=true; nascondi=true"><i class="glyphicon glyphicon-plus"></i></button>
                           </div>
 
                           <form ng-show="vedi" name="nuovo" novalidate>
@@ -151,11 +151,11 @@
                                 </td>
 
                                 <td width="5%">  
-                                  <button class="btn btn-primary" ng-hide="!nuovo.$valid" ng-show="vedi && nuovo.$valid" type="submit" ng-click="addMessage(kkk, gruppo.$id); vedi=false; nascondi=false">Add</button>
+                                  <button class="btn btn-primary" ng-hide="!nuovo.$valid" ng-show="vedi && nuovo.$valid" type="submit" ng-click="addMessage(kkk, gruppo.$id); vedi=false; nascondi=false"><i class="glyphicon glyphicon-ok"></i></button>
                                 </td>
 
                                 <td width="5%">  
-                                  <button class="btn btn-danger" type="submit" ng-show="vedi" ng-click="vedi=false; nascondi=false; clearBox(kkk)">-</button>
+                                  <button class="btn btn-danger" type="submit" ng-show="vedi" ng-click="vedi=false; nascondi=false; clearBox(kkk)"><i class="glyphicon glyphicon-minus"></i></button>
                                 </td>
                               </tr> 
 
@@ -169,7 +169,7 @@
 
 
 
-
+      </div>
     </div>
     
 
