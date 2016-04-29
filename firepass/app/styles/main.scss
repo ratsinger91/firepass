@@ -102,9 +102,19 @@ body {
 
 
 .bordato{
+  margin-top: 20px;
   border-bottom: 3px dotted #e5e5e5;
   
   margin-bottom: 1px;
+
+}
+
+
+.search{
+
+  position: absolute;
+  width: 300px;
+  float:right;
 
 }
 

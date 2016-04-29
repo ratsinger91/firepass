@@ -27,12 +27,16 @@
   <div class="pad"> 
 
     <button class="btn btn-primary" ng-click="addGruppo()">New Group</button> 
+    <div class="search input-group">
+    <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+    <input  class="form-control input-lg" ng-model="groupFilter" placeholder="Search group..." />
+    </div>
 
 
 
     
 
-    <div class="bordato" ng-repeat="gruppo in gruppi">
+    <div class="bordato" ng-repeat="gruppo in gruppi | filter:{gruppo:groupFilter}">
 
 
 

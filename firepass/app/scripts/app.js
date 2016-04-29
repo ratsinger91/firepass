@@ -50,7 +50,7 @@ angular
 .constant("masterPwd", "YOUR_PASSWORD")
 .constant("db", "YOUR_FIREBASE_DB_LINK")
 .constant("dbgruppi", "YOUR_FIREBASE_GROUPS_TAB_LINK")
-.constant("dbcredentials", "YOUR_FIREBASE_CREDENTIALS_TAB_LINK")
+.constant("dbcredentials", "YOUR_FIREBASE_CRADENTIALS_TAB_LINK")
 
 
 
@@ -108,6 +108,7 @@ $scope.deleteCred = function(idgruppo,element){
 $scope.addGruppo = function(){
 
 $scope.gruppi.$add({ gruppo : "new"});
+$scope.groupFilter="";
 
 };
 
