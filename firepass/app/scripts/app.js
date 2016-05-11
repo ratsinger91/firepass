@@ -1,15 +1,6 @@
 'use strict';
 
-/**
- * @ngdoc overview
- * @name fireApp
- * @description
- * # fireApp
- *
- * Main module of the application.
- */
-angular
-  .module('fireApp', [
+var app = angular.module('fireApp', [
     'ngAnimate',
     'ngAria',
     'ngCookies',
@@ -25,136 +16,41 @@ angular
 
 
 
-  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'SampleCtrl',
-        controllerAs: 'main'
-      })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl',
-        controllerAs: 'about'
-      })
-       .when('/data', {
-        templateUrl: 'views/data.html',
-        controller: 'SampleCtrl',
-        controllerAs: 'main'
-      })
-      .otherwise({
-        redirectTo: '/'
-      });
-  })
-  
-.constant("masterPwd", "YOUR_PASSWORD")
-.constant("db", "YOUR_FIREBASE_DB_LINK")
-.constant("dbgruppi", "YOUR_FIREBASE_GROUPS_TAB_LINK")
-.constant("dbcredentials", "YOUR_FIREBASE_CRADENTIALS_TAB_LINK")
-
 
 
   
-  .controller("SampleCtrl", function($rootScope , $scope, $firebaseArray, $firebaseObject, $location, masterPwd, db, dbgruppi, dbcredentials, $cookieStore) {
-  var ref = new Firebase(db);
- $scope.gruppos= $firebaseArray(ref);
-
-  var rif = new Firebase(dbgruppi);
- $scope.gruppi= $firebaseArray(rif);
-
-  var raf = new Firebase(dbcredentials);
- $scope.credentials= $firebaseArray(raf);
-
- 
-$scope.tipo="password";
-
-
-
-
-$scope.$on('$routeChangeStart', function(next, current) { 
-
-  $scope.loggedUser= $cookieStore.get('auth');
-
-  if ($scope.loggedUser == "yup"){
-
-      $location.path( "/data" );
-  } else{
-
-    $location.path( "/" );
-  }
-   
- });
-
-
-
-
-$scope.deleteCred = function(idgruppo,element){
-  $scope.tem = [];
-  $scope.gruppos.$remove(idgruppo.credentials);
   
 
 
 
-};
- 
-  // add new items to the array
-  // the message is automatically added to our Firebase database!
+  
+  
 
 
 
 
 
 
-$scope.addGruppo = function(){
-
-$scope.gruppi.$add({ gruppo : "new"});
-$scope.groupFilter="";
-
-};
-
-
-
- $scope.clearBox = function(kkk, gruppo) {
-
-      kkk.newUser="";
-      kkk.newPass="";
-      kkk.newDescr="";
-  };
 
 
 
 
-  $scope.addMessage = function(kkk, gruppo) {
-      
-    
-      
-
-    
-    $scope.credentials.$add({ 
-      gruppo: gruppo,
-      user: kkk.newUser,
-      password: kkk.newPass,
-      desc: kkk.newDescr
-      } );
-
-      kkk.newUser="";
-      kkk.newPass="";
-      kkk.newDescr="";
-  };
 
 
 
-  $scope.login = function() {
-    if ($scope.password==masterPwd) {
-     $cookieStore.put("auth", "yup");
-      $rootScope.loggedUser = "giusto";
-      $scope.nascondi== false;
-      $location.path( "/data" );
-      
 
-    };
-  }
 
+
+
+
+
+
+
+
+
+
+
+  
 
 
 
@@ -162,24 +58,8 @@ $scope.groupFilter="";
 
 
   
-  // click on `index.html` above to see $remove() and $save() in action
-})
 
 
 
 
-.run( function($rootScope, $location) {
 
-    // register listener to watch route changes
-    $rootScope.$on( "$routeChangeStart", function(event, next, current) {
-      if ( $rootScope.loggedUser == null ) {
-        // no logged user, we should be going to #login
-        if ( next.templateUrl == "views/main.html" ) {
-          // already going to #login, no redirect needed
-        } else {
-          // not going to #login, we should redirect now
-          $location.path( "/" );
-        }
-      }         
-    });
- })
